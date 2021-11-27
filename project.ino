@@ -3,6 +3,7 @@
 const int tempSensorPin = A0;
 const int lightSensorPin = A1;
 const int moistureSensorPin = A2;
+const int motorPin = 9;
 
 // Moisture Sensor constants
 const int AirValue = 444;   // value when dry
@@ -20,10 +21,11 @@ int soilmoisturepercent=0;
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 void setup() {
-  // Set pins as input
+  // Set pins as input/output
   pinMode(tempSensorPin, INPUT);
   pinMode(lightSensorPin, INPUT);
   pinMode(moistureSensorPin, INPUT);
+  pinMode(motorPin, OUTPUT);
   
   // Begin LCD function
   lcd.begin(16, 2);
@@ -42,6 +44,9 @@ void loop() {
   // Read Moisture Value
   soilMoistureValue = analogRead(A2);
   soilmoisturepercent = map(soilMoistureValue, AirValue, WaterValue, 0, 100);
+
+  // Set motor to off
+  digitalWrite(motorPin, LOW);
 
   // Print moisture sensor values to row 0
   lcd.setCursor(0, 0);
