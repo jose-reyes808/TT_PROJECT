@@ -64,7 +64,14 @@ void loop() {
     lcd.print(soilmoisturepercent);
     lcd.print("%");
     lcd.print("  ");
-    
+  }
+
+  // not sure what percent we should water the plant
+  if (soilmoisturepercent <= 40)
+  {
+    digitalWrite(motorPin, HIGH);
+    delay(2000);
+    digitalWrite(motorPin, LOW);
   }
   
   // Print Temp and Light values to LCD row 1
