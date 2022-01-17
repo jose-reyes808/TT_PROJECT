@@ -66,7 +66,6 @@ void loop() {
     lcd.print("  ");
   }
 
-  // not sure what percent we should water the plant
   if (soilmoisturepercent <= 40)
   {
     digitalWrite(motorPin, HIGH);
